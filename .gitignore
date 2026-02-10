@@ -1,0 +1,16 @@
+# env
+.env
+
+# virtualenv
+.venv/
+venv/
+
+# database
+*.db
+
+# python cache
+__pycache__/
+*.pyc
+
+# pycharm
+.idea/
