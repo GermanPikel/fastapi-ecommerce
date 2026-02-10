@@ -36,6 +36,8 @@ class ProductCreate(BaseModel):
 class Product(ProductCreate):
     id: int = Field(..., description="Уникальный идентификатор товара")
     is_active: bool = Field(..., description="Активность товара")
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -72,5 +74,17 @@ class Review(BaseModel):
     comment_date: datetime = Field(default_factory=datetime.now)
     grade: int = Field(ge=1, le=5)
     is_active: bool = Field(default=True)
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ProductList(BaseModel):
+    """
+    Cписок пагинации для товаров
+    """
+    items: list[Product] = Field(description="Товары для текущей страницы")
+    total: int = Field(ge=0, description="Общее количество товаров")
+    page: int = Field(ge=1, description="Номер текущей страницы")
+    page_size: int = Field(ge=1, description="Общее количество элементов на странице")
 
     model_config = ConfigDict(from_attributes=True)
