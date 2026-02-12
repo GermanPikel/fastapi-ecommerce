@@ -1,6 +1,8 @@
+from fastapi import Form
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from decimal import Decimal
 from datetime import datetime
+from typing import Annotated
 
 
 class CategoryCreate(BaseModel):
@@ -28,9 +30,25 @@ class ProductCreate(BaseModel):
     name: str = Field(..., min_length=3, max_length=100, description="Название товара (3-100 символов)")
     description: str | None = Field(default=None, max_length=500, description="Описание товара (до 500 символов)")
     price: Decimal = Field(..., gt=0, description="Цена товара (больше 0)", decimal_places=2)
-    image_url: str | None = Field(default=None, max_length=200, description="URL изображения товара")
     stock: int = Field(..., ge=0, description="Количество товара на складе (0 или больше)")
     category_id: int = Field(..., description="ID категории, к которой относится товар")
+
+    @classmethod
+    def as_form(
+            cls,
+            name: Annotated[str, Form(...)],
+            price: Annotated[Decimal, Form(...)],
+            stock: Annotated[int, Form(...)],
+            category_id: Annotated[int, Form(...)],
+            description: Annotated[str | None, Form()] = None,
+    ) -> "ProductCreate":
+        return cls(
+            name=name,
+            description=description,
+            price=price,
+            stock=stock,
+            category_id=category_id,
+        )
 
 
 class Product(ProductCreate):
@@ -38,6 +56,7 @@ class Product(ProductCreate):
     is_active: bool = Field(..., description="Активность товара")
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: datetime = Field(default_factory=datetime.now)
+    image_url: str | None = Field(None, description="URL изображения товара")
 
     model_config = ConfigDict(from_attributes=True)
 
