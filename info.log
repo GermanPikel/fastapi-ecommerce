@@ -1,0 +1,7 @@
+Log: [7e0a676b-ddd3-47db-9c55-8b75bb7df54e:2026-02-14T19:23:02.000413+0300 - INFO - Successfully accessed /docs]
+Log: [e291be62-7933-4242-a334-0a798027bf08:2026-02-14T19:23:02.102003+0300 - INFO - Successfully accessed /openapi.json]
+Log: [ed748194-8c9f-4fc1-b8de-68f6148a1784:2026-02-14T19:23:27.932782+0300 - INFO - Successfully accessed /categories/]
+Log: [3ed0f68a-b427-4fb0-9c6f-fc2d6df55725:2026-02-14T19:23:37.231482+0300 - INFO - Successfully accessed /products/]
+Log: [811fb586-c631-4fa2-a0a2-3b077cfea02b:2026-02-14T19:28:04.997698+0300 - WARNING - Request to /test failed]
+Log: [8d640b0c-674e-4571-bdd8-c32f54765f91:2026-02-14T19:28:57.063248+0300 - ERROR - Request to / failed: ]
+Log: [c73e7c91-ca05-41c4-92c2-cee234034da0:2026-02-14T19:29:13.462405+0300 - INFO - Successfully accessed /categories/]
