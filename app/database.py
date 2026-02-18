@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 from sqlalchemy.orm import DeclarativeBase
 
 # Строка подключения для PostgreSQl
-DATABASE_URL = "postgresql+asyncpg://ecommerce_user:pgpass777@localhost:5434/ecommerce_db"
+DATABASE_URL = "postgresql+asyncpg://ecommerce_user:pgpass777@db:5432/ecommerce_db"
 
 # Создаём Engine
 async_engine = create_async_engine(DATABASE_URL, echo=True)
